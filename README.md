@@ -1,4 +1,4 @@
-# Fused MCP: Setting up MCP Servers for Data Scientists
+# Fused MCP Agents: Setting up MCP Servers for Data Scientists
 
 MCP servers allow Claude & other LLMs to make HTTP requests, connecting them to APIs & executable code. We built this repo for ourselves & other data scientists to easily pass _any_ Python code directly to your own desktop Claude app. 
 
@@ -6,11 +6,11 @@ This repo offers a simple step-by-step notebook workflow to setup [MCP Servers](
 
 ![Demo once setup](https://fused-magic.s3.us-west-2.amazonaws.com/udf-mcp-repo/readme_asset/mcp_demo_fused_notebook_2.5x.gif)
 
-<!-- TODO: Add GIF of installed setup so people can see what this looks like -->
-
 ## Requirements
-- Python 3.13
-- Latest [Claude Desktop app](https://claude.ai/download) installed (note this is only available on MacOS & Windows for now, see at the bottom of this README for instructions with a local client without the Desktop app)
+- Python 3.11
+- Latest [Claude Desktop app](https://claude.ai/download) installed (MacOS & Windows)
+
+If you're on Linux, the desktop app isn't available so [we've made a simple client](#using-a-local-claude-client-without-claude-desktop-app) you can use to have it running locally too!
 
 You do _not_ need a Fused account to do any of this! All of this will be running on your local machine
 
@@ -46,15 +46,11 @@ This should give you something like:
 
 ![uv helper output function](/img/uv_run_helper_output.png)
 
-- Open the `setting_up_udf_mcp.ipynb` notebook in your favorite local IDE & follow instructions from there.
-
-<!-- TODO: Need to add steps to run notebook-->
+- Open the `fused_mcp_agents.ipynb` notebook in your favorite local IDE & follow instructions from there.
 
 ## Repository structure
 
 This repo is build on top of [MCP Server](https://modelcontextprotocol.io/introduction) & [Fused UDFs](https://docs.fused.io/core-concepts/write/) which are Python functions that can be run from anywhere.
-
-<!-- TODO: Explain a bit of how repo works & abstracts away some of the MCP server setup -->
 
 ## Support & Community
 
