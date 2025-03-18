@@ -7,7 +7,7 @@ This repo offers a simple step-by-step notebook workflow to setup [MCP Servers](
 ![Demo once setup](https://fused-magic.s3.us-west-2.amazonaws.com/udf-mcp-repo/readme_asset/mcp_demo_fused_notebook_2.5x.gif)
 
 ## Requirements
-- Python 3.13
+- Python 3.11
 - Latest [Claude Desktop app](https://claude.ai/download) installed (MacOS & Windows)
 
 If you're on Linux, the desktop app isn't available so [we've made a simple client](#using-a-local-claude-client-without-claude-desktop-app) you can use to have it running locally too!
