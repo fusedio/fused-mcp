@@ -7,7 +7,7 @@ This repo offers a simple step-by-step notebook workflow to setup MCP Servers wi
 ## Requirements
 - Python 3.13
 - [Claude Desktop app](https://claude.ai/download) installed
-- `uv` installed 
+<!-- - `uv` installed  -->
 
 
 ## Installation
@@ -18,7 +18,17 @@ This repo offers a simple step-by-step notebook workflow to setup MCP Servers wi
 git clone git@github.com:fusedio/udf-test.git
 ```
 
-- Install `uv` if you don't have it:
+[Optionally] Make a virtual environment. We'll leave this up to you for now
+
+- Python 
+
+- Test out the client project:
+
+```bash
+python run.py -h
+```
+
+<!-- - Install `uv` if you don't have it:
 
     Macos:
     ```bash
@@ -52,8 +62,8 @@ uv venv
 - Test out the client project:
 
 ```bash
-uv run run.py -h
-```
+python run.py -h
+``` -->
 
 
 - Open the `setting_up_udf_mcp.ipynb` notebook in your favorite local IDE & follow instructions from there
