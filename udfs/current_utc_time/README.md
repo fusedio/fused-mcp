@@ -4,7 +4,7 @@
 ## Get started
 ```python
 # Import UDFs
-from udf_current_utc_time import current_utc_time
+from current_utc_time import current_utc_time
 
 # Instantiate individual jobs
 job_current_utc_time = current_utc_time()
