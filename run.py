@@ -29,7 +29,7 @@ def main():
     tokens = args.tokens.split(",") if args.tokens else None
     udf_names = args.udf_names.split(",") if args.udf_names else None
 
-    commit = "699ad0e"
+    commit = "12e5d3b"
     mcp_utils = fused.load(
         f"https://github.com/fusedio/udfs/tree/{commit}/public/common_mcp"
     ).utils
