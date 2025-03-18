@@ -30,12 +30,31 @@ git clone git@github.com:fusedio/udf-test.git
     powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
     ```
 
-- Navigate to the repo & install it:
+- Navigate to the repo & create a new `venv` with `uv`:
 
 ```bash
 cd udf-test/
-uv run run.py --info
+uv venv
 ```
+
+- Activate your environment:
+
+    MacOS
+    ```
+    source .venv/bin/activate
+    ```
+
+    Windows
+    ```
+    .venv\Scripts\activate
+    ```
+
+- Test out the client project:
+
+```bash
+uv run run.py -h
+```
+
 
 - Open the `setting_up_udf_mcp.ipynb` notebook in your favorite local IDE & follow instructions from there
 
@@ -46,3 +65,7 @@ uv run run.py --info
 This repo is build on top of [MCP Server](https://modelcontextprotocol.io/introduction) & [Fused UDFs](https://docs.fused.io/core-concepts/write/) which are Python functions that can be run from anywhere.
 
 <!-- TODO: Explain a bit of how repo works & abstracts away some of the MCP server setup -->
+
+## Support & Community
+
+Feel free to join our [Discord server](https://discord.com/invite/BxS5wMzdRk) if you want some help getting unblocked!
