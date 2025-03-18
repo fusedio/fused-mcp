@@ -14,14 +14,17 @@ This repo offers a simple step-by-step notebook workflow to setup MCP Servers wi
 - Clone this repo in any local directory:
 
 ```bash
-git clone git@github.com:fusedio/udf-test.git
+git clone https://github.com/fusedio/udf-test.git
 ```
 
-- Navigate to the repo & install it:
+- Navigate to the repo & install the requirements:
 
 ```bash
 cd udf-test/
-uv run run.py --info
+# using uv
+uv venv
+# or using pip
+pip install fused "fused[all]>=1.14.2" "jupyterlab>=4.3.6" "mcp[cli]>=1.4.1"
 ```
 
 - Open the `setting_up_udf_mcp.ipynb` notebook in your favorite local IDE & follow instructions from there
