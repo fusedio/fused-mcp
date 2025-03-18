@@ -40,7 +40,7 @@ uv venv
 - Install dependencies directly:
 
 ```bash
-pip install fused "fused[all]>=1.14.2" "jupyterlab>=4.3.6" "mcp[cli]>=1.4.1"
+pip install fused "fused[all]>=1.15.0" "jupyterlab>=4.3.6" "mcp[cli]>=1.4.1"
 ```
 
 - Test out the client by asking for its info:

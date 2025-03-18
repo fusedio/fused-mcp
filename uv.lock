@@ -402,7 +402,8 @@ wheels = [
 
 [[package]]
 name = "fused"
-source = { directory = "../fused-py" }
+version = "1.15.0"
+source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "aiohttp" },
     { name = "loguru" },
@@ -414,6 +415,10 @@ dependencies = [
     { name = "tqdm" },
     { name = "yarl" },
 ]
+sdist = { url = "https://files.pythonhosted.org/packages/03/85/32fed8db1643b4a742fcc32065f5f3e7c62834a980737305ba165cb305c7/fused-1.15.0.tar.gz", hash = "sha256:a0ec245fad3cbed230f384b87681d217a5495ebc0f84814493f108e591041d18", size = 259482 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/f6/2d/9275b44e5d4e0319130d9b4843f8986106685eb649bdb82defdbce17c747/fused-1.15.0-py3-none-any.whl", hash = "sha256:0a82c867a8feb2e4f1b9a9f5c66cc63ea587eab2cd19d09c40ac229932cea2bf", size = 348808 },
+]
 
 [package.optional-dependencies]
 all = [
@@ -424,44 +429,6 @@ all = [
     { name = "shapely" },
     { name = "xarray" },
 ]
-
-[package.metadata]
-requires-dist = [
-    { name = "affine", marker = "extra == 'batch'" },
-    { name = "aiohttp", specifier = ">=3.8.3,<4.0.0" },
-    { name = "fsspec", marker = "extra == 'batch'" },
-    { name = "geopandas", marker = "extra == 'all'" },
-    { name = "geopandas", marker = "extra == 'batch'" },
-    { name = "geopandas", marker = "extra == 'vector'" },
-    { name = "importlib-resources", marker = "extra == 'batch'" },
-    { name = "jinja2", marker = "extra == 'batch'" },
-    { name = "loguru", specifier = ">=0.6.0,<0.7.0" },
-    { name = "mercantile", marker = "extra == 'all'" },
-    { name = "mercantile", marker = "extra == 'batch'" },
-    { name = "mercantile", marker = "extra == 'raster'" },
-    { name = "mercantile", marker = "extra == 'vector'" },
-    { name = "numpy", specifier = ">=1.20" },
-    { name = "pandas", marker = "extra == 'batch'" },
-    { name = "pyarrow", specifier = ">=11" },
-    { name = "pydantic", specifier = ">=2.7.0,<3.0.0" },
-    { name = "pyproj", marker = "extra == 'batch'" },
-    { name = "rasterio", marker = "extra == 'all'" },
-    { name = "rasterio", marker = "extra == 'raster'" },
-    { name = "requests", specifier = ">=2.31,<3.0" },
-    { name = "rioxarray", marker = "extra == 'all'" },
-    { name = "rioxarray", marker = "extra == 'batch'" },
-    { name = "rioxarray", marker = "extra == 'raster'" },
-    { name = "rtoml", marker = "sys_platform != 'emscripten'", specifier = ">=0,<1" },
-    { name = "shapely", marker = "extra == 'all'" },
-    { name = "shapely", marker = "extra == 'batch'" },
-    { name = "shapely", marker = "extra == 'vector'" },
-    { name = "tqdm", specifier = ">=4.67.1,<5.0.0" },
-    { name = "xarray", marker = "extra == 'all'" },
-    { name = "xarray", marker = "extra == 'batch'" },
-    { name = "xarray", marker = "extra == 'raster'" },
-    { name = "yarl", specifier = ">=1.9.4,<2.0.0" },
-]
-provides-extras = ["all", "batch", "raster", "vector"]
 
 [[package]]
 name = "geopandas"
@@ -1910,7 +1877,7 @@ dependencies = [
 
 [package.metadata]
 requires-dist = [
-    { name = "fused", extras = ["all"], directory = "../fused-py" },
+    { name = "fused", extras = ["all"], specifier = ">=1.15.0" },
     { name = "jupyterlab", specifier = ">=4.3.6" },
     { name = "mcp", extras = ["cli"], specifier = ">=1.4.1" },
 ]
