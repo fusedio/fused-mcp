@@ -15,8 +15,9 @@ This repo offers a simple step-by-step notebook workflow to setup MCP Servers wi
 - Clone this repo in any local directory:
 
 ```bash
-git clone git@github.com:fusedio/udf-test.git
+git clone https://github.com/fusedio/udf-test.git
 ```
+
 
 [Optionally]  Install `uv` if you don't have it:
 
