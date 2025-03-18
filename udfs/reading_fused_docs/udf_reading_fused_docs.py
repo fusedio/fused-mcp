@@ -1,6 +1,5 @@
 @fused.udf
-def udf(input_query: str = ''):
-    # input_query is just a dumb empty arg so Claude can have an arg to pass. Always leave as ''
+def udf():
     import pandas as pd
     import requests
     

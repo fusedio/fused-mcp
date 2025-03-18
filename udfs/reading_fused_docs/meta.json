@@ -37,12 +37,16 @@
               }
             },
             "fused:udfType": "auto",
+            "fused:mcp": {
+              "description": "This UDF reads the Fused docs and returns them as plaintext.",
+              "parameters": ""
+            },
             "fused:slug": "reading_fused_docs",
             "fused:name": "reading_fused_docs",
             "fused:id": null,
             "fused:defaultParameters": []
           },
-          "source": "reading_fused_docs.py",
+          "source": "udf_reading_fused_docs.py",
           "headers": []
         }
       }

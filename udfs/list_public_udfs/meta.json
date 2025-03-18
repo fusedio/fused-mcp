@@ -8,7 +8,7 @@
         "type": "udf",
         "udf": {
           "type": "geopandas_v2",
-          "name": "list_pubilc_udfs",
+          "name": "list_public_udfs",
           "entrypoint": "udf",
           "parameters": {},
           "metadata": {
@@ -63,11 +63,18 @@
               }
             },
             "fused:udfType": "auto",
-            "fused:slug": "list_pubilc_udfs",
-            "fused:name": "list_pubilc_udfs",
+            "fused:mcp": {
+              "description": "This UDF returns a number of public Fused UDFs (name of UDF + code).",
+              "parameters": [{
+                "name": "number_public_udfs",
+                "type": "int"
+              }]
+            },
+            "fused:slug": "list_public_udfs",
+            "fused:name": "list_public_udfs",
             "fused:id": null
           },
-          "source": "list_pubilc_udfs.py",
+          "source": "udf_list_public_udfs.py",
           "headers": []
         }
       }
