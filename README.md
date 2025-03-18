@@ -10,7 +10,7 @@ This repo offers a simple step-by-step notebook workflow to setup [MCP Servers](
 
 ## Requirements
 - Python 3.13
-- Latest [Claude Desktop app](https://claude.ai/download) installed (note this is only available on MacOS & Windows for now)
+- Latest [Claude Desktop app](https://claude.ai/download) installed (note this is only available on MacOS & Windows for now, see at the bottom of this README for instructions with a local client without the Desktop app)
 
 You do _not_ need a Fused account to do any of this! All of this will be running on your local machine
 
@@ -63,3 +63,24 @@ Feel free to join our [Discord server](https://discord.com/invite/BxS5wMzdRk) if
 ## Contribute
 
 Feel free to open PRs to add your own UDFs to `udfs/` so others can play around with them locally to!
+
+## Using a local Claude client (without Claude Desktop app)
+
+If you are unable to install the Claude Desktop app (e.g., on Linux), we provide
+a small example local client interface to use Claude with the MCP server configured
+in this repo:
+
+- This workflow requires an API key Claude as an environment variable. For example,
+  add a `.env` file in this repo with an `ANTHROPIC_API_KEY` entry.
+
+- Start the MCP server:
+
+  ```bash
+  uv run main.py --agent get_current_time
+  ```
+
+- In another terminal session, start the local client, pointing to the address of the server:
+
+  ```bash
+  uv run client.py http://localhost:8080/sse
+  ```
