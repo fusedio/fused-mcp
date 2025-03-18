@@ -9,7 +9,6 @@ This repo offers a simple step-by-step notebook workflow to setup MCP Servers wi
 - [Claude Desktop app](https://claude.ai/download) installed
 - [`uv`](https://docs.astral.sh/uv/) installed
 
-
 ## Installation
 
 - Clone this repo in any local directory, and navigate to the repo:
@@ -57,6 +56,9 @@ Feel free to join our [Discord server](https://discord.com/invite/BxS5wMzdRk) if
 If you are unable to install the Claude Desktop app (e.g., on Linux), we provide
 a small example local client interface to use Claude with the MCP server configured
 in this repo:
+
+- This workflow requires an API key Claude as an environment variable. For example,
+  add a `.env` file in this repo with an `ANTHROPIC_API_KEY` entry.
 
 - Start the MCP server:
 

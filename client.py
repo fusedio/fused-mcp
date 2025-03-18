@@ -1,8 +1,5 @@
 import asyncio
-import json
-import os
 from typing import Optional
-from contextlib import AsyncExitStack
 
 from mcp import ClientSession
 from mcp.client.sse import sse_client
@@ -25,12 +22,12 @@ class MCPClient:
     async def connect_to_sse_server(self, server_url: str):
         """
         Connect to an MCP server running with SSE transport
-        
+
         Args:
             server_url: The URL of the SSE endpoint
         """
         print(f"Connecting to SSE endpoint: {server_url}")
-        
+
         try:
             # Create the SSE client
             self._streams_context = sse_client(url=server_url)
@@ -75,7 +72,7 @@ class MCPClient:
         ]
 
         response = await self.session.list_tools()
-        available_tools = [{ 
+        available_tools = [{
             "name": tool.name,
             "description": tool.description,
             "input_schema": tool.inputSchema
@@ -107,9 +104,9 @@ class MCPClient:
             elif content.type == 'tool_use':
                 tool_name = content.name
                 tool_args = content.input
-                
+
                 print(f"Claude is calling tool: {tool_name} with args: {tool_args}")
-                
+
                 # Execute tool call
                 result = await self.session.call_tool(tool_name, tool_args)
                 tool_results.append({"call": tool_name, "result": result})
@@ -144,23 +141,23 @@ class MCPClient:
                 final_text.append(response.content[0].text)
 
         return "\n".join(final_text)
-    
+
     async def chat_loop(self):
         """Run an interactive chat loop"""
         print("\nMCP Client Started!")
         print("Type your queries or 'quit' to exit.")
-        
+
         while True:
             try:
                 query = input("\nQuery: ").strip()
-                
+
                 if query.lower() == 'quit':
                     break
-                
-                print("Processing query...")    
+
+                print("Processing query...")
                 response = await self.process_query(query)
                 print("\n" + response)
-                    
+
             except Exception as e:
                 print(f"\nError: {str(e)}")
                 import traceback
@@ -169,8 +166,8 @@ class MCPClient:
 
 async def main():
     if len(sys.argv) < 2:
-        print("Usage: python clientsse.py <URL of SSE MCP server>")
-        print("Example: python clientsse.py https://dev.udf.ai/chat/4a693c58-dbd3-4f08-a07e-2ec305a8bf29/sse")
+        print("Usage: python client.py <URL of SSE MCP server>")
+        print("Example: python client.py https://dev.udf.ai/chat/4a693c58-dbd3-4f08-a07e-2ec305a8bf29/sse")
         sys.exit(1)
 
     server_url = sys.argv[1]

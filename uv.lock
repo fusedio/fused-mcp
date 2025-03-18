@@ -1924,6 +1924,7 @@ dependencies = [
     { name = "fused", extra = ["all"] },
     { name = "jupyterlab" },
     { name = "mcp", extra = ["cli"] },
+    { name = "python-dotenv" },
 ]
 
 [package.metadata]
@@ -1932,6 +1933,7 @@ requires-dist = [
     { name = "fused", extras = ["all"], specifier = ">=1.15.0" },
     { name = "jupyterlab", specifier = ">=4.3.6" },
     { name = "mcp", extras = ["cli"], specifier = ">=1.4.1" },
+    { name = "python-dotenv", specifier = ">=1.0.1" },
 ]
 
 [[package]]
