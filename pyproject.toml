@@ -1,5 +1,5 @@
 [project]
-name = "udfs-ai"
+name = "fused-mcp"
 version = "0.1.0"
 description = "Fused MCP: Setting up MCP Servers for Data Scientists"
 readme = "README.md"
