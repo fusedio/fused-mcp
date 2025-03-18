@@ -1,0 +1,52 @@
+{
+  "version": "0.0.3",
+  "job_config": {
+    "version": "0.0.3",
+    "name": null,
+    "steps": [
+      {
+        "type": "udf",
+        "udf": {
+          "type": "geopandas_v2",
+          "name": "reading_fused_docs",
+          "entrypoint": "udf",
+          "parameters": {},
+          "metadata": {
+            "fused:vizConfig": {
+              "tileLayer": {
+                "@@type": "TileLayer",
+                "minZoom": 0,
+                "maxZoom": 19,
+                "tileSize": 256,
+                "pickable": true
+              },
+              "rasterLayer": {
+                "@@type": "BitmapLayer",
+                "pickable": true
+              },
+              "hexLayer": {
+                "@@type": "Tile3DLayer",
+                "pointSize": 2,
+                "pickable": true,
+                "loader": "@@#CesiumIonLoader",
+                "loadOptions": {
+                  "cesium-ion": {
+                    "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI3NjEwMjA4Ni00YmVkLTQyMjgtYjRmZS1lY2M3ZWFiMmFmNTYiLCJpZCI6MjYxMzMsImlhdCI6MTY3NTM2ODY4NX0.chGkGL6DkDNv5wYJQDMzWIvi9iDoVa27dgng_5ARDmo"
+                  }
+                }
+              }
+            },
+            "fused:udfType": "auto",
+            "fused:slug": "reading_fused_docs",
+            "fused:name": "reading_fused_docs",
+            "fused:id": null,
+            "fused:defaultParameters": []
+          },
+          "source": "reading_fused_docs.py",
+          "headers": []
+        }
+      }
+    ],
+    "metadata": null
+  }
+}

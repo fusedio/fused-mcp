@@ -1,0 +1,77 @@
+{
+  "version": "0.0.3",
+  "job_config": {
+    "version": "0.0.3",
+    "name": null,
+    "steps": [
+      {
+        "type": "udf",
+        "udf": {
+          "type": "geopandas_v2",
+          "name": "list_pubilc_udfs",
+          "entrypoint": "udf",
+          "parameters": {},
+          "metadata": {
+            "fused:defaultParameters": [
+              {
+                "parameter": "number_public_udfs",
+                "value": "",
+                "type": "int",
+                "suggestedValues": []
+              }
+            ],
+            "fused:description": "## List Public UDFs\n\nThis UDF calls the Fused pubilc UDF API to return a dataframe of name + code of a given number of UDFs",
+            "fused:vizConfig": {
+              "tileLayer": {
+                "@@type": "TileLayer",
+                "minZoom": 0,
+                "maxZoom": 19,
+                "tileSize": 256
+              },
+              "rasterLayer": {
+                "@@type": "BitmapLayer",
+                "pickable": true
+              },
+              "vectorLayer": {
+                "@@type": "GeoJsonLayer",
+                "stroked": true,
+                "filled": false,
+                "pickable": true,
+                "lineWidthMinPixels": 1,
+                "pointRadiusMinPixels": 1,
+                "getLineColor": {
+                  "@@function": "colorContinuous",
+                  "attr": "value",
+                  "domain": [
+                    0,
+                    10
+                  ],
+                  "steps": 20,
+                  "colors": "Burg",
+                  "nullColor": [
+                    184,
+                    184,
+                    184
+                  ]
+                },
+                "getFillColor": [
+                  208,
+                  208,
+                  208,
+                  40
+                ]
+              }
+            },
+            "fused:udfType": "auto",
+            "fused:slug": "list_pubilc_udfs",
+            "fused:name": "list_pubilc_udfs",
+            "fused:id": null
+          },
+          "source": "list_pubilc_udfs.py",
+          "headers": []
+        }
+      }
+    ],
+    "metadata": null
+  }
+}
