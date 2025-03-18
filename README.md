@@ -24,7 +24,7 @@ cd udf-test/
 # using uv
 uv venv
 # or using pip
-pip install fused "fused[all]>=1.14.2" "jupyterlab>=4.3.6" "mcp[cli]>=1.4.1"
+pip install fused "fused[all]>=1.15.0" "jupyterlab>=4.3.6" "mcp[cli]>=1.4.1"
 ```
 
 - Open the `setting_up_udf_mcp.ipynb` notebook in your favorite local IDE & follow instructions from there
