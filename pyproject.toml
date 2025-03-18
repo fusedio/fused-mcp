@@ -1,7 +1,7 @@
 [project]
 name = "udfs-ai"
 version = "0.1.0"
-description = "Setting up MCP Servers for Data Scientists with Fused UDFs"
+description = "Fused MCP: Setting up MCP Servers for Data Scientists"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [

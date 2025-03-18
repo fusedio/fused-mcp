@@ -12,10 +12,11 @@ This repo offers a simple step-by-step notebook workflow to setup MCP Servers wi
 
 ## Installation
 
-- Clone this repo in any local directory:
+- Clone this repo in any local directory, and navigate to the repo:
 
   ```bash
   git clone https://github.com/fusedio/udf-test.git
+  cd udf-test/
   ```
 
 - Install [`uv`](https://docs.astral.sh/uv/getting-started/installation/)
