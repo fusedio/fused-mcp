@@ -6,9 +6,7 @@ This repo offers a simple step-by-step notebook workflow to setup MCP Servers wi
 
 ## Requirements
 - Python 3.13
-- [Claude Desktop app](https://claude.ai/download) installed
-- [`uv`](https://docs.astral.sh/uv/) installed
-
+- Latest [Claude Desktop app](https://claude.ai/download) installed (note this is only available on MacOS & Windows for now)
 
 ## Installation
 
@@ -37,6 +35,10 @@ This repo offers a simple step-by-step notebook workflow to setup MCP Servers wi
   ```bash
   uv run main.py -h
   ```
+
+This should give you something like:
+
+![uv helper output function](/img/uv_run_helper_output.png)
 
 - Open the `setting_up_udf_mcp.ipynb` notebook in your favorite local IDE & follow instructions from there.
 
