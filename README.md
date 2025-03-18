@@ -18,53 +18,35 @@ This repo offers a simple step-by-step notebook workflow to setup MCP Servers wi
 git clone git@github.com:fusedio/udf-test.git
 ```
 
-[Optionally] Make a virtual environment. We'll leave this up to you for now
+[Optionally]  Install `uv` if you don't have it:
 
-- Python 
-
-- Test out the client project:
-
+Macos / Linux:
 ```bash
-python run.py -h
+curl -LsSf https://astral.sh/uv/install.sh | sh
 ```
 
-<!-- - Install `uv` if you don't have it:
+Windows:
+```
+powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
+```
 
-    Macos:
-    ```bash
-    curl -LsSf https://astral.sh/uv/install.sh | sh
-    ```
-
-    Windows:
-    ```
-    powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
-    ```
-
-- Navigate to the repo & create a new `venv` with `uv`:
+[Optionally #2] Activate your virtual environment
 
 ```bash
-cd udf-test/
 uv venv
 ```
 
-- Activate your environment:
+- Install dependencies directly:
 
-    MacOS
-    ```
-    source .venv/bin/activate
-    ```
+```bash
+pip install fused "fused[all]>=1.14.2" "jupyterlab>=4.3.6" "mcp[cli]>=1.4.1"
+```
 
-    Windows
-    ```
-    .venv\Scripts\activate
-    ```
-
-- Test out the client project:
+- Test out the client by asking for its info:
 
 ```bash
 python run.py -h
-``` -->
-
+```
 
 - Open the `setting_up_udf_mcp.ipynb` notebook in your favorite local IDE & follow instructions from there
 
