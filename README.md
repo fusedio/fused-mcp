@@ -7,6 +7,7 @@ This repo offers a simple step-by-step notebook workflow to setup MCP Servers wi
 ## Requirements
 - Python 3.13
 - [Claude Desktop app](https://claude.ai/download) installed
+- `uv` installed 
 
 
 ## Installation
@@ -16,6 +17,18 @@ This repo offers a simple step-by-step notebook workflow to setup MCP Servers wi
 ```bash
 git clone git@github.com:fusedio/udf-test.git
 ```
+
+- Install `uv` if you don't have it:
+
+    Macos:
+    ```bash
+    curl -LsSf https://astral.sh/uv/install.sh | sh
+    ```
+
+    Windows:
+    ```
+    powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
+    ```
 
 - Navigate to the repo & install it:
 
