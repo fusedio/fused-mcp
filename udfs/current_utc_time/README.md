@@ -4,13 +4,13 @@
 ## Get started
 ```python
 # Import UDFs
-from udf_get_current_time import get_current_time
+from udf_current_utc_time import current_utc_time
 
 # Instantiate individual jobs
-job_get_current_time = get_current_time()
+job_current_utc_time = current_utc_time()
 
 # Instantiate multi-step job
-job = fused.experimental.job([job_get_current_time])
+job = fused.experimental.job([job_current_utc_time])
 
 # Run locally
 job.run_local(file_id=0, chunk_id=0)

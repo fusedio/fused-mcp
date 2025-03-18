@@ -3,7 +3,7 @@
         {
             "name": "get_current_time",
             "udfs": [
-                "get_current_time"
+                "current_utc_time"
             ]
         },
         {
