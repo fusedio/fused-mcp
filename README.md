@@ -7,49 +7,37 @@ This repo offers a simple step-by-step notebook workflow to setup MCP Servers wi
 ## Requirements
 - Python 3.13
 - [Claude Desktop app](https://claude.ai/download) installed
-<!-- - `uv` installed  -->
+- [`uv`](https://docs.astral.sh/uv/) installed
 
 
 ## Installation
 
 - Clone this repo in any local directory:
 
-```bash
-git clone https://github.com/fusedio/udf-test.git
-```
+  ```bash
+  git clone https://github.com/fusedio/udf-test.git
+  ```
 
+- Install [`uv`](https://docs.astral.sh/uv/getting-started/installation/)
+  if you don't have it:
 
-[Optionally]  Install `uv` if you don't have it:
+  Macos / Linux:
+  ```bash
+  curl -LsSf https://astral.sh/uv/install.sh | sh
+  ```
 
-Macos / Linux:
-```bash
-curl -LsSf https://astral.sh/uv/install.sh | sh
-```
-
-Windows:
-```
-powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
-```
-
-[Optionally #2] Activate your virtual environment
-
-```bash
-uv venv
-```
-
-- Install dependencies directly:
-
-```bash
-pip install fused "fused[all]>=1.15.0" "jupyterlab>=4.3.6" "mcp[cli]>=1.4.1"
-```
+  Windows:
+  ```
+  powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
+  ```
 
 - Test out the client by asking for its info:
 
-```bash
-python run.py -h
-```
+  ```bash
+  uv run run.py -h
+  ```
 
-- Open the `setting_up_udf_mcp.ipynb` notebook in your favorite local IDE & follow instructions from there
+- Open the `setting_up_udf_mcp.ipynb` notebook in your favorite local IDE & follow instructions from there.
 
 <!-- TODO: Need to add steps to run notebook-->
 
