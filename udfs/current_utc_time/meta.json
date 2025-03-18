@@ -1,1 +1,34 @@
-{"job_config":{"name":null,"steps":[{"type":"udf","name":null,"metadata":null,"ignore_chunk_error":false,"udf":{"name":"current_utc_time","type":"geopandas_v2","headers":[],"metadata":{"fused:mcp":{"description":"UDF that returns the current datetime in UTC","parameters":""},"fused:slug":"current_utc_time","fused:name":"current_utc_time"},"table_schema":null,"entrypoint":"udf","cache_max_age":0,"parameters":{},"original_headers":"","source":"udf_current_utc_time.py"},"input":null}],"metadata":null}}
+{
+    "job_config": {
+        "name": null,
+        "steps": [
+            {
+                "type": "udf",
+                "name": null,
+                "metadata": null,
+                "ignore_chunk_error": false,
+                "udf": {
+                    "name": "current_utc_time",
+                    "type": "geopandas_v2",
+                    "headers": [],
+                    "metadata": {
+                        "fused:mcp": {
+                            "description": "UDF that returns the current datetime in UTC",
+                            "parameters": ""
+                        },
+                        "fused:slug": "current_utc_time",
+                        "fused:name": "current_utc_time"
+                    },
+                    "table_schema": null,
+                    "entrypoint": "udf",
+                    "cache_max_age": 0,
+                    "parameters": {},
+                    "original_headers": "",
+                    "source": "udf_current_utc_time.py"
+                },
+                "input": null
+            }
+        ],
+        "metadata": null
+    }
+}
