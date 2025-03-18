@@ -19,8 +19,8 @@ You do _not_ need a Fused account to do any of this! All of this will be running
 - Clone this repo in any local directory, and navigate to the repo:
 
   ```bash
-  git clone https://github.com/fusedio/udf-test.git
-  cd udf-test/
+  git clone https://github.com/fusedio/fused-mcp.git
+  cd fused-mcp/
   ```
 
 - Install [`uv`](https://docs.astral.sh/uv/getting-started/installation/)
