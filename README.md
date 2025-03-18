@@ -35,7 +35,7 @@ This repo offers a simple step-by-step notebook workflow to setup MCP Servers wi
 - Test out the client by asking for its info:
 
   ```bash
-  uv run run.py -h
+  uv run main.py -h
   ```
 
 - Open the `setting_up_udf_mcp.ipynb` notebook in your favorite local IDE & follow instructions from there.
