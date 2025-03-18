@@ -5,6 +5,13 @@
             "udfs": [
                 "get_current_time"
             ]
+        },
+        {
+            "name": "fused_docs",
+            "udfs": [
+                "list_public_udfs",
+                "reading_fused_docs"
+            ]
         }
     ]
 }
