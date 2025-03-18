@@ -1,18 +1,6 @@
 {
     "agents": [
         {
-            "name": "agent1",
-            "udfs": [
-                "Power_Plants_H3"
-            ]
-        },
-        {
-            "name": "testing",
-            "udfs": [
-                "testing"
-            ]
-        },
-        {
             "name": "get_current_time",
             "udfs": [
                 "get_current_time"
