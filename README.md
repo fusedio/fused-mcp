@@ -51,3 +51,21 @@ This repo is build on top of [MCP Server](https://modelcontextprotocol.io/introd
 ## Support & Community
 
 Feel free to join our [Discord server](https://discord.com/invite/BxS5wMzdRk) if you want some help getting unblocked!
+
+## Using a local Claude client (without Claude Desktop app)
+
+If you are unable to install the Claude Desktop app (e.g., on Linux), we provide
+a small example local client interface to use Claude with the MCP server configured
+in this repo:
+
+- Start the MCP server:
+
+  ```bash
+  uv run main.py --agent get_current_time
+  ```
+
+- In another terminal session, start the local client, pointing to the address of the server:
+
+  ```bash
+  uv run client.py http://localhost:8080/sse
+  ```
