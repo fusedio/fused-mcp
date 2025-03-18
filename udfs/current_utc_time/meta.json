@@ -24,7 +24,7 @@
                     "cache_max_age": 0,
                     "parameters": {},
                     "original_headers": "",
-                    "source": "udf_current_utc_time.py"
+                    "source": "current_utc_time.py"
                 },
                 "input": null
             }

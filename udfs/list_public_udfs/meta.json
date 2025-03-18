@@ -74,7 +74,7 @@
             "fused:name": "list_public_udfs",
             "fused:id": null
           },
-          "source": "udf_list_public_udfs.py",
+          "source": "list_public_udfs.py",
           "headers": []
         }
       }
