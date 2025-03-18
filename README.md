@@ -1,4 +1,4 @@
-# Fused MCP: Setting up MCP Servers for Data Scientists
+# Fused MCP Agents: Setting up MCP Servers for Data Scientists
 
 MCP servers allow Claude & other LLMs to make HTTP requests, connecting them to APIs & executable code. We built this repo for ourselves & other data scientists to easily pass _any_ Python code directly to your own desktop Claude app. 
 
@@ -46,15 +46,11 @@ This should give you something like:
 
 ![uv helper output function](/img/uv_run_helper_output.png)
 
-- Open the `setting_up_udf_mcp.ipynb` notebook in your favorite local IDE & follow instructions from there.
-
-<!-- TODO: Need to add steps to run notebook-->
+- Open the `fused_mcp_agents.ipynb` notebook in your favorite local IDE & follow instructions from there.
 
 ## Repository structure
 
 This repo is build on top of [MCP Server](https://modelcontextprotocol.io/introduction) & [Fused UDFs](https://docs.fused.io/core-concepts/write/) which are Python functions that can be run from anywhere.
-
-<!-- TODO: Explain a bit of how repo works & abstracts away some of the MCP server setup -->
 
 ## Support & Community
 
