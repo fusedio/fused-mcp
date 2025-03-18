@@ -1,5 +1,6 @@
 import fused
 import argparse
+import json
 
 
 def main():
@@ -28,6 +29,12 @@ def main():
     # Process token and udf_names arguments
     tokens = args.tokens.split(",") if args.tokens else None
     udf_names = args.udf_names.split(",") if args.udf_names else None
+
+    if tokens is None and udf_names is None:
+        with open("agents.json") as f:
+            agents = json.load(f)["agents"]
+
+        udf_names = agents[0]["udfs"]
 
     commit = "12e5d3b"
     mcp_utils = fused.load(
