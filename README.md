@@ -10,7 +10,9 @@ This repo offers a simple step-by-step notebook workflow to setup [MCP Servers](
 
 ## Requirements
 - Python 3.13
-- Latest [Claude Desktop app](https://claude.ai/download) installed (note this is only available on MacOS & Windows for now, see at the bottom of this README for instructions with a local client without the Desktop app)
+- Latest [Claude Desktop app](https://claude.ai/download) installed (MacOS & Windows)
+
+If you're on Linux, the desktop app isn't available so [we've made a simple client](#using-a-local-claude-client-without-claude-desktop-app) you can use to have it running locally too!
 
 You do _not_ need a Fused account to do any of this! All of this will be running on your local machine
 
