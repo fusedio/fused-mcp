@@ -7,7 +7,7 @@ This repo offers a simple step-by-step notebook workflow to setup MCP Servers wi
 ## Requirements
 - Python 3.13
 - [Claude Desktop app](https://claude.ai/download) installed
-- `uv` installed 
+- [`uv`](https://docs.astral.sh/uv/) installed
 
 
 ## Installation
