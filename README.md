@@ -62,7 +62,7 @@ Here are a few common steps to debug the setup:
 
 - You might need to pass global paths to some functions to the `Claude_Desktop_Config.json`. For example, by default we only pass `uv`:
 
-```
+```json
 {
   'mcpServers': {
     'get_current_time': {
@@ -75,7 +75,7 @@ Here are a few common steps to debug the setup:
 
 But you might need to pass the full path to `uv`, which you can simply pass to `common`.generate_local_mcp_config` in the notebook:
 
-```
+```python
 # in fused_mcp_agents.ipynb
 import shutil 
 
@@ -88,7 +88,7 @@ common.generate_local_mcp_config(
 ```
 
 Which would create a config like this:
-```
+```json
 {
   'mcpServers': {
     'get_current_time': {
