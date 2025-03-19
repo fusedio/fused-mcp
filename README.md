@@ -64,12 +64,13 @@ Here are a few common steps to debug the setup:
 
 ```json
 {
-  'mcpServers': {
-    'get_current_time': {
-      'command': 'uv', # This might not work
-      'args': [...]
+    "mcpServers": {
+        "qgis": {
+            "command": "uv",
+            "args": ["..."]
+        }
+
     }
-  }
 }
 ```
 
@@ -88,14 +89,16 @@ common.generate_local_mcp_config(
 ```
 
 Which would create a config like this:
+
 ```json
 {
-  'mcpServers': {
-    'get_current_time': {
-      'command': '/Users/<YOUR_USERNAME>/.local/bin/uv', # This might not work
-      'args': [...]
+    "mcpServers": {
+        "qgis": {
+            "command": "/Users/<YOUR_USERNAME>/.local/bin/uv",
+            "args": ["..."]
+        }
+
     }
-  }
 }
 ```
 
