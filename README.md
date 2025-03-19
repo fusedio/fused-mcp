@@ -44,7 +44,7 @@ You do _not_ need a Fused account to do any of this! All of this will be running
 
 - Open the [`fused_mcp_agents.ipynb`](fused_mcp_agents.ipynb) notebook in your favorite local IDE & follow instructions from there.
 
-![Notebook](/img/step-by-step-notebook.png)
+![Notebook](/img/Starting_notebook.gif)
 
 ## Repository structure
 
