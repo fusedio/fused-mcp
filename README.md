@@ -12,7 +12,7 @@ This repo offers a simple step-by-step notebook workflow to setup [MCP Servers](
 
 If you're on Linux, the desktop app isn't available so [we've made a simple client](#using-a-local-claude-client-without-claude-desktop-app) you can use to have it running locally too!
 
-You do _not_ need a Fused account to do any of this! All of this will be running on your local machine
+You do _not_ need a Fused account to do any of this! All of this will be running on your local machine.
 
 ## Installation
 
@@ -74,7 +74,7 @@ Here are a few common steps to debug the setup:
 }
 ```
 
-But you might need to pass the full path to `uv`, which you can simply pass to `common`.generate_local_mcp_config` in the notebook:
+But you might need to pass the full path to `uv`, which you can simply pass to `common.generate_local_mcp_config` in the notebook:
 
 ```python
 # in fused_mcp_agents.ipynb
@@ -106,7 +106,7 @@ Which would create a config like this:
 
 ## Contribute
 
-Feel free to open PRs to add your own UDFs to `udfs/` so others can play around with them locally to!
+Feel free to open PRs to add your own UDFs to `udfs/` so others can play around with them locally too!
 
 ## Using a local Claude client (without Claude Desktop app)
 
@@ -120,7 +120,7 @@ NOTE: You'll need an API key for Claude here as you won't use the Desktop App
 - Create an [Anthropic API Key](https://console.anthropic.com/settings/keys)
 
 - Create a `.env`:
-  ```
+  ```bash
   touch .env
   ```
 
