@@ -66,7 +66,7 @@ Here are a few common steps to debug the setup:
 {
   'mcpServers': {
     'get_current_time': {
-      'command': 'uv', # This might not work
+      'command': 'uv',
       'args': [...]
     }
   }
@@ -88,11 +88,12 @@ common.generate_local_mcp_config(
 ```
 
 Which would create a config like this:
+
 ```json
 {
   'mcpServers': {
     'get_current_time': {
-      'command': '/Users/<YOUR_USERNAME>/.local/bin/uv', # This might not work
+      'command': '/Users/<YOUR_USERNAME>/.local/bin/uv',
       'args': [...]
     }
   }
