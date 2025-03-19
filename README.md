@@ -42,7 +42,7 @@ You do _not_ need a Fused account to do any of this! All of this will be running
   uv run main.py -h
   ```
 
-- Open the [`fused_mcp_agents.ipynb`](fused_mcp_agents.ipynb) notebook in your favorite local IDE & follow instructions from there.
+- Start by following our getting-started notebook [`fused_mcp_agents.ipynb`](fused_mcp_agents.ipynb) in your favorite local IDE to get set up and then make your way to the more advanced notebook to [make your own Agents & functions](create_your_own_agents.ipynb)
 
 ![Notebook](/img/Starting_notebook.gif)
 
