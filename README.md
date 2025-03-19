@@ -42,11 +42,9 @@ You do _not_ need a Fused account to do any of this! All of this will be running
   uv run main.py -h
   ```
 
-This should give you something like:
+- Open the [`fused_mcp_agents.ipynb`](fused_mcp_agents.ipynb) notebook in your favorite local IDE & follow instructions from there.
 
-![uv helper output function](/img/uv_run_helper_output.png)
-
-- Open the `fused_mcp_agents.ipynb` notebook in your favorite local IDE & follow instructions from there.
+![Notebook](/img/step-by-step-notebook.png)
 
 ## Repository structure
 
@@ -55,6 +53,53 @@ This repo is build on top of [MCP Server](https://modelcontextprotocol.io/introd
 ## Support & Community
 
 Feel free to join our [Discord server](https://discord.com/invite/BxS5wMzdRk) if you want some help getting unblocked!
+
+Here are a few common steps to debug the setup:
+
+-  Running `uv run main.py -h` should return something like this:
+
+![uv helper output function](/img/uv_run_helper_output.png)
+
+- You might need to pass global paths to some functions to the `Claude_Desktop_Config.json`. For example, by default we only pass `uv`:
+
+```
+{
+  'mcpServers': {
+    'get_current_time': {
+      'command': 'uv', # This might not work
+      'args': [...]
+    }
+  }
+}
+```
+
+But you might need to pass the full path to `uv`, which you can simply pass to `common`.generate_local_mcp_config` in the notebook:
+
+```
+# in fused_mcp_agents.ipynb
+import shutil 
+
+common.generate_local_mcp_config(
+    config_path=PATH_TO_CLAUDE_CONFIG,
+    agents_list = ["get_current_time"],
+    repo_path= WORKING_DIR,
+    uv_path=shutil.which('uv'),
+)
+```
+
+Which would create a config like this:
+```
+{
+  'mcpServers': {
+    'get_current_time': {
+      'command': '/Users/<YOUR_USERNAME>/.local/bin/uv', # This might not work
+      'args': [...]
+    }
+  }
+}
+```
+
+-  If Claude runs without showing any connected tools, take a look at the [MCP Docs for troubleshooting the Claude Desktop setup](https://modelcontextprotocol.io/quickstart/server#claude-for-desktop-integration-issues)
 
 ## Contribute
 
@@ -66,8 +111,22 @@ If you are unable to install the Claude Desktop app (e.g., on Linux), we provide
 a small example local client interface to use Claude with the MCP server configured
 in this repo:
 
-- This workflow requires an API key Claude as an environment variable. For example,
-  add a `.env` file in this repo with an `ANTHROPIC_API_KEY` entry.
+NOTE: You'll need an API key for Claude here as you won't use the Desktop App
+
+- Create an [Anthropic Console Account](https://console.anthropic.com/)
+- Create an [Anthropic API Key](https://console.anthropic.com/settings/keys)
+
+- Create a `.env`:
+  ```
+  touch .env
+  ```
+
+- Add your  key as `ANTHROPIC_API_KEY` inside the `.env`:
+
+  ```
+  # .env
+  ANTHROPIC_API_KEY = "your-key-here"
+  ```
 
 - Start the MCP server:
 
