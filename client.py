@@ -1,11 +1,13 @@
 import asyncio
-from typing import Optional
+import json
 
 from mcp import ClientSession
 from mcp.client.sse import sse_client
-
 from anthropic import Anthropic
+from anthropic.types import MessageParam, ToolParam
+
 from dotenv import load_dotenv
+
 
 # NOTE this needs a ANTHROPIC_API_KEY in .env to work
 load_dotenv()  # load environment variables from .env
@@ -14,7 +16,7 @@ CLAUDE_MODEL = "claude-3-7-sonnet-20250219"
 class MCPClient:
     def __init__(self):
         # Initialize session and client objects
-        self.session: Optional[ClientSession] = None
+        self.session: ClientSession | None
         self._session_context = None
         self._streams_context = None
         self.anthropic = Anthropic()
@@ -64,23 +66,19 @@ class MCPClient:
 
     async def process_query(self, query: str) -> str:
         """Process a query using Claude and available tools"""
-        messages = [
-            {
-                "role": "user",
-                "content": query
-            }
-        ]
+        if not self.session:
+            raise ValueError("Session not initialized")
+
+        messages = [ MessageParam(role="user", content=query)  ]
 
         response = await self.session.list_tools()
-        available_tools = [{
-            "name": tool.name,
-            "description": tool.description,
-            "input_schema": tool.inputSchema
-        } for tool in response.tools]
+        available_tools = [ToolParam(name=tool.name, description=tool.description or "", input_schema=tool.inputSchema)
+         for tool in response.tools]
 
-        print(f"Available tools: {[t['name'] for t in available_tools]}")
-        print(f"Available tools description: {[t['description'] for t in available_tools]}")
-        print(f"Available input_schema: {[t['input_schema'] for t in available_tools]}")
+        for t in available_tools:
+            print(f"Available tool: {t['name']}")
+            print(f"Available tool description: {t.get('description', 'No description')}")
+            print(f"Available input_schema: {t['input_schema']}")
 
         # Initial Claude API call
         print("Sending query to Claude...")
@@ -118,16 +116,13 @@ class MCPClient:
                     "role": "assistant",
                     "content": assistant_message_content
                 })
-                messages.append({
-                    "role": "user",
-                    "content": [
-                        {
-                            "type": "tool_result",
-                            "tool_use_id": content.id,
-                            "content": result.content
-                        }
-                    ]
-                })
+                messages.append(MessageParam(role="user", content=json.dumps([
+                    {
+                        "type": "tool_result",
+                        "tool_use_id": content.id,
+                        "content": result.content
+                    }
+                ])))
 
                 # Get next response from Claude
                 print("Sending tool results to Claude for follow-up...")
