@@ -13,6 +13,7 @@ from dotenv import load_dotenv
 load_dotenv()  # load environment variables from .env
 CLAUDE_MODEL = "claude-3-7-sonnet-20250219"
 
+
 class MCPClient:
     def __init__(self):
         # Initialize session and client objects
@@ -69,15 +70,23 @@ class MCPClient:
         if not self.session:
             raise ValueError("Session not initialized")
 
-        messages = [ MessageParam(role="user", content=query)  ]
+        messages = [MessageParam(role="user", content=query)]
 
         response = await self.session.list_tools()
-        available_tools = [ToolParam(name=tool.name, description=tool.description or "", input_schema=tool.inputSchema)
-         for tool in response.tools]
+        available_tools = [
+            ToolParam(
+                name=tool.name,
+                description=tool.description or "",
+                input_schema=tool.inputSchema,
+            )
+            for tool in response.tools
+        ]
 
         for t in available_tools:
             print(f"Available tool: {t['name']}")
-            print(f"Available tool description: {t.get('description', 'No description')}")
+            print(
+                f"Available tool description: {t.get('description', 'No description')}"
+            )
             print(f"Available input_schema: {t['input_schema']}")
 
         # Initial Claude API call
@@ -86,7 +95,7 @@ class MCPClient:
             model=CLAUDE_MODEL,
             max_tokens=1000,
             messages=messages,
-            tools=available_tools
+            tools=available_tools,
         )
 
         # Process response and handle tool calls
@@ -95,11 +104,11 @@ class MCPClient:
 
         assistant_message_content = []
         for content in response.content:
-            if content.type == 'text':
+            if content.type == "text":
                 print("Received text response from Claude")
                 final_text.append(content.text)
                 assistant_message_content.append(content)
-            elif content.type == 'tool_use':
+            elif content.type == "tool_use":
                 tool_name = content.name
                 tool_args = content.input
 
@@ -112,17 +121,23 @@ class MCPClient:
 
                 # Continue conversation with tool results
                 assistant_message_content.append(content)
-                messages.append({
-                    "role": "assistant",
-                    "content": assistant_message_content
-                })
-                messages.append(MessageParam(role="user", content=json.dumps([
-                    {
-                        "type": "tool_result",
-                        "tool_use_id": content.id,
-                        "content": result.content
-                    }
-                ])))
+                messages.append(
+                    {"role": "assistant", "content": assistant_message_content}
+                )
+                messages.append(
+                    MessageParam(
+                        role="user",
+                        content=json.dumps(
+                            [
+                                {
+                                    "type": "tool_result",
+                                    "tool_use_id": content.id,
+                                    "content": result.content,
+                                }
+                            ]
+                        ),
+                    )
+                )
 
                 # Get next response from Claude
                 print("Sending tool results to Claude for follow-up...")
@@ -130,7 +145,7 @@ class MCPClient:
                     model=CLAUDE_MODEL,
                     max_tokens=1000,
                     messages=messages,
-                    tools=available_tools
+                    tools=available_tools,
                 )
 
                 final_text.append(response.content[0].text)
@@ -146,7 +161,7 @@ class MCPClient:
             try:
                 query = input("\nQuery: ").strip()
 
-                if query.lower() == 'quit':
+                if query.lower() == "quit":
                     break
 
                 print("Processing query...")
@@ -156,13 +171,16 @@ class MCPClient:
             except Exception as e:
                 print(f"\nError: {str(e)}")
                 import traceback
+
                 traceback.print_exc()
 
 
 async def main():
     if len(sys.argv) < 2:
         print("Usage: python client.py <URL of SSE MCP server>")
-        print("Example: python client.py https://dev.udf.ai/chat/4a693c58-dbd3-4f08-a07e-2ec305a8bf29/sse")
+        print(
+            "Example: python client.py https://dev.udf.ai/chat/4a693c58-dbd3-4f08-a07e-2ec305a8bf29/sse"
+        )
         sys.exit(1)
 
     server_url = sys.argv[1]
@@ -176,6 +194,7 @@ async def main():
     except Exception as e:
         print(f"Error in main: {str(e)}")
         import traceback
+
         traceback.print_exc()
     finally:
         print("Cleaning up client...")
@@ -184,4 +203,5 @@ async def main():
 
 if __name__ == "__main__":
     import sys
+
     asyncio.run(main())
