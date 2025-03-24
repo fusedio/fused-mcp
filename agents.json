@@ -21,6 +21,12 @@
                 "building_permits_in_vancouver",
                 "internet_speeds_for_lat_lon"
             ]
+        },
+        {
+            "name": "elevation_stats_for_lat_lon_area",
+            "udfs": [
+                "elevation_stats"
+            ]
         }
     ]
 }
