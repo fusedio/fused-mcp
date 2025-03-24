@@ -12,6 +12,15 @@
                 "list_public_udfs",
                 "reading_fused_docs"
             ]
+        },
+        {
+            "name": "vancouver_open_data",
+            "udfs": [
+                "hundred_parks_in_vancouver",
+                "electric_vehicle_chargers_in_vancouver",
+                "building_permits_in_vancouver",
+                "internet_speeds_for_lat_lon"
+            ]
         }
     ]
 }
