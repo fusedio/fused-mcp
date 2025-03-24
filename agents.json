@@ -27,6 +27,12 @@
             "udfs": [
                 "elevation_stats"
             ]
+        },
+        {
+            "name": "routing_agent",
+            "udfs": [
+                "single_routing_agent"
+            ]
         }
     ]
 }
