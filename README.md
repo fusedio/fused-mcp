@@ -1,4 +1,4 @@
-# Fused MCP Agents: Setting up MCP Servers Data
+# Fused MCP Agents: Setting up MCP Servers for Data
 
 [MCP servers](https://modelcontextprotocol.io/introduction) allow LLMs like Claude to make HTTP requests, connecting them to APIs & executable code. We built this repo for ourselves & anyone working with data to easily pass _any_ Python code directly to your own desktop Claude app. 
 
@@ -16,7 +16,7 @@ You do _not_ need a Fused account to do any of this! All of this will be running
 
 ## Installation
 
-- Clone this repo in any local directory, and navigate to the repo:
+- Clone this repo in any local directory, and navigate to the repo: 
 
   ```bash
   git clone https://github.com/fusedio/fused-mcp.git
