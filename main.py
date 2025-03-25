@@ -48,7 +48,7 @@ def main():
 
         udf_names = agents[0]["udfs"]
 
-    commit = "5f860ab"
+    commit = "76f53b6"
     mcp_utils = fused.load(
         f"https://github.com/fusedio/udfs/tree/{commit}/public/common_mcp"
     ).utils

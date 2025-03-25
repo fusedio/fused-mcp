@@ -16,7 +16,7 @@ You do _not_ need a Fused account to do any of this! All of this will be running
 
 ## Installation
 
-- Clone this repo in any local directory, and navigate to the repo:
+- Clone this repo in any local directory, and navigate to the repo: 
 
   ```bash
   git clone https://github.com/fusedio/fused-mcp.git
