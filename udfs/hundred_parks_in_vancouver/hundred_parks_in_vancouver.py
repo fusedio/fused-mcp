@@ -12,6 +12,7 @@ def parks_vancouver():
     import pandas as pd
     from shapely.geometry import Polygon, MultiPolygon, shape
     import numpy as np
+    import math
     from pandas import json_normalize
 
     @fused.cache
@@ -64,7 +65,17 @@ def parks_vancouver():
         geometry=geometries,
         crs="EPSG:4326"
     )
-    # gdf['area'] = gdf.geometry.area
+
+    # Adding estimate of average size of park so next UDF knows bu how much it needs to buffer lat / lon point to get similar expecation
+    gdf['buffer_radius'] = gdf['area_ha'].apply(
+        lambda x: math.sqrt((x * 10000) / math.pi)
+    )
+
+    # # Adding centroid calculation
+    # centroids = gdf.geometry.centroid
+    # gdf['centroid_lon'] = centroids.x
+    # gdf['centroid_lat'] = centroids.y
+
     print(f"{gdf.sample()=}")
     print(f"{gdf.columns=}")
     print(gdf.shape)

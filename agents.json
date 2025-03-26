@@ -17,8 +17,6 @@
             "name": "vancouver_open_data",
             "udfs": [
                 "hundred_parks_in_vancouver",
-                "electric_vehicle_chargers_in_vancouver",
-                "building_permits_in_vancouver",
                 "internet_speeds_for_lat_lon"
             ]
         },
@@ -26,6 +24,22 @@
             "name": "elevation_stats_for_lat_lon_area",
             "udfs": [
                 "elevation_stats"
+            ]
+        },
+        {
+            "name": "dynamic_output_vector",
+            "udfs": [
+                "dynamic_output_vector_udf"
+            ]
+        },
+        {
+            "name": "vancouver_open_data_demo",
+            "udfs": [
+                "hundred_parks_in_vancouver",
+                "electric_vehicle_chargers_in_vancouver",
+                "yearly_crime_amount",
+                "internet_speeds_for_lat_lon",
+                "community_gardens_vancouver"
             ]
         },
         {
