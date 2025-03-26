@@ -27,12 +27,6 @@
             ]
         },
         {
-            "name": "apple_banana_orange",
-            "udfs": [
-                "apple_banana_orange_udf"
-            ]
-        },
-        {
             "name": "dynamic_output_vector",
             "udfs": [
                 "dynamic_output_vector_udf"
@@ -46,6 +40,7 @@
                 "yearly_crime_amount",
                 "internet_speeds_for_lat_lon",
                 "community_gardens_vancouver"
+            ]
         },
         {
             "name": "routing_agent",
