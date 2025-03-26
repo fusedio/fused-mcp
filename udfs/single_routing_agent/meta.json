@@ -1,0 +1,125 @@
+{
+  "version": "0.0.3",
+  "job_config": {
+    "version": "0.0.3",
+    "name": null,
+    "steps": [
+      {
+        "type": "udf",
+        "udf": {
+          "type": "geopandas_v2",
+          "name": "single_routing_agent",
+          "entrypoint": "udf",
+          "parameters": {},
+          "metadata": {
+            "fused:defaultViewState": {
+              "enable": false,
+              "latitude": 0,
+              "longitude": 0,
+              "zoom": 0,
+              "pitch": 0,
+              "bearing": 0
+            },
+            "fused:vizConfig": {
+              "tileLayer": {
+                "@@type": "TileLayer",
+                "minZoom": 0,
+                "maxZoom": 19,
+                "tileSize": 256,
+                "pickable": true
+              },
+              "rasterLayer": {
+                "@@type": "BitmapLayer"
+              },
+              "vectorLayer": {
+                "@@type": "GeoJsonLayer",
+                "stroked": true,
+                "filled": true,
+                "pickable": false,
+                "lineWidthMinPixels": 3,
+                "pointType": "circle",
+                "getPointRadius": 150,
+                "getLineColor": {
+                  "@@function": "hasProp",
+                  "property": "r",
+                  "present": "@@=[properties.r, properties.g, properties.b]",
+                  "absent": [
+                    0,
+                    255,
+                    255,
+                    255
+                  ]
+                },
+                "getFillColor": {
+                  "@@function": "hasProp",
+                  "property": "r",
+                  "present": "@@=[properties.r, properties.g, properties.b]",
+                  "absent": [
+                    0,
+                    255,
+                    255,
+                    255
+                  ]
+                }
+              }
+            },
+            "fused:udfType": "auto",
+            "fused:slug": "single_routing_agent",
+            "fused:name": "single_routing_agent",
+            "fused:gitUrl": "https://github.com/fusedio/udfs/tree/469d5171279cd9b7742fb22c70d23eeea0d14607/public/single_route/",
+            "fused:gitShortUrl": "https://github.com/fusedio/udfs/tree/469d517/public/single_route/",
+            "fused:gitPath": "public/single_route",
+            "fused:gitRef": "469d5171279cd9b7742fb22c70d23eeea0d14607",
+            "fused:assetUrl": "https://fused-magic.s3.us-west-2.amazonaws.com/thumbnails/udfs-staging/route_lax.png",
+            "fused:tags": [
+              {
+                "id": "Routing",
+                "label": "Routing"
+              },
+              {
+                "id": "Valhalla",
+                "label": "Valhalla"
+              },
+              {
+                "id": "Calculate distance",
+                "label": "Calculate distance"
+              }
+            ],
+            "fused:description": "## Overview\n\nThis UDF returns a single optimal (time minimized) route as a function of origin and destination coordinate pairs (input variables), using the Valhalla routing engine API. The geopandas dataframe returned contains three rows: start and end point geometries and the linestring geometry of the optimal path. (Simple driving directions are also printed.)\n\n## External links\n\n- [Valhalla GitHub Docs](https://valhalla.github.io/valhalla/)\n",
+            "fused:gitAuthorNames": [
+              "Plinio Guzman",
+              "Gabriel Durkin"
+            ],
+            "fused:gitAuthorUsernames": [
+              "pgzmnk",
+              "gdurkin"
+            ],
+            "fused:gitAuthorUrls": [
+              "https://github.com/pgzmnk",
+              "https://github.com/gdurkin"
+            ],
+            "fused:gitAuthorAvatarUrls": [
+              "https://avatars.githubusercontent.com/u/27398253?v=4",
+              "https://avatars.githubusercontent.com/u/8119745?v=4"
+            ],
+            "fused:gitLastModified": "2024-07-02T15:37:29+00:00",
+            "fused:gitRepo": "fusedio/udfs",
+            "fused:id": null,
+            "fused:mcp": {
+              "description": "## Model Context Protocol (MCP) Description\n\nThe User-Defined Function (UDF) `single_routing_agent` is designed to provide routing services by returning a single optimized (time minimized) route derived from an origin and destination coordinate pairs. The code implements the Valhalla routing engine API, a versatile open-source navigation software, to calculate the most time-effective route between two points.\n\n### Functionality\nThe function begins by taking in specific parameters including `lat_start`, `lng_start`, `lat_end`, `lng_end`, and `cost`. These parameters represent the latitude and longitude of the start and end points, while the 'cost' parameter is indicative of the transportation mode for the route. That allows users to select among modes like 'auto', 'pedestrian', 'bicycle', 'truck', 'bus', 'motor_scooter'. \n\nIt interacts with the Valhalla server, sending a request that includes these parameters. Valhalla's server responds with a JSON object that contains details regarding the requested route. \n\nKey variables are then extracted from the response for subsequent tasks. Driving instructions are extracted and displayed to give the user step-by-step advice on how to follow the route. The encoded shape detailing the specific path is decoded and stored. \n\nA temporary GeoDataFrame is created using GeoPandas to compute the distance along the route. The route length is computed, details regarding computation time are printed, and a pandas DataFrame is returned as the output. \n\n### Outputs\nThe pandas DataFrame returned includes the following columns: \n\n- `start_lat`: The latitude of the starting point\n- `start_lng`: The longitude of the starting point\n- `end_lat`: The latitude of the ending point\n- `end_lng`: The longitude of the ending point\n- `transportation_mode`: The mode of transportation used (`cost` parameter)\n- `route_length_km`: The length of the route (in kilometers)\n- `computation_time_sec`: How long it took to compute the route (in seconds)\n- `instructions`: A list of instructions for driving along the route\n\n### Key Technical Aspects\nIt is important to note that this UDF involves interacting with an external server, so its execution time can vary depending on the server's response time. Also, this function prints out driving instructions and calculation times, which might not be desirable in all applications and especially in a production setting. Also Please assume the lat lon of the locations if not explicitly mentioned by the user.\n\nThe API's reliability can also impact the function's results.",
+              "parameters": "[\n  {\n    \"name\": \"lat_start\",\n    \"type\": \"str\"\n  },\n  {\n    \"name\": \"lng_start\",\n    \"type\": \"str\"\n  },\n  {\n    \"name\": \"lat_end\",\n    \"type\": \"str\"\n  },\n  {\n    \"name\": \"lng_end\",\n    \"type\": \"str\"\n  },\n  {\n    \"name\": \"cost\",\n    \"type\": \"str\"\n  }\n]"
+            }
+          },
+          "source": "single_routing_agent.py",
+          "headers": [
+            {
+              "module_name": "utils",
+              "source_file": "utils.py"
+            }
+          ]
+        }
+      }
+    ],
+    "metadata": null
+  }
+}

@@ -46,6 +46,11 @@
                 "yearly_crime_amount",
                 "internet_speeds_for_lat_lon",
                 "community_gardens_vancouver"
+        },
+        {
+            "name": "routing_agent",
+            "udfs": [
+                "single_routing_agent"
             ]
         }
     ]
