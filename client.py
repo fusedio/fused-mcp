@@ -1,23 +1,22 @@
 import asyncio
 import json
+import os
+from typing import Optional
+from contextlib import AsyncExitStack
 
 from mcp import ClientSession
 from mcp.client.sse import sse_client
-from anthropic import Anthropic
-from anthropic.types import MessageParam, ToolParam
 
+from anthropic import Anthropic
 from dotenv import load_dotenv
 
-
-# NOTE this needs a ANTHROPIC_API_KEY in .env to work
 load_dotenv()  # load environment variables from .env
-CLAUDE_MODEL = "claude-3-7-sonnet-20250219"
 
 
 class MCPClient:
     def __init__(self):
         # Initialize session and client objects
-        self.session: ClientSession | None
+        self.session: Optional[ClientSession] = None
         self._session_context = None
         self._streams_context = None
         self.anthropic = Anthropic()
@@ -67,89 +66,109 @@ class MCPClient:
 
     async def process_query(self, query: str) -> str:
         """Process a query using Claude and available tools"""
-        if not self.session:
-            raise ValueError("Session not initialized")
-
-        messages = [MessageParam(role="user", content=query)]
+        messages = [{"role": "user", "content": query}]
 
         response = await self.session.list_tools()
         available_tools = [
-            ToolParam(
-                name=tool.name,
-                description=tool.description or "",
-                input_schema=tool.inputSchema,
-            )
+            {
+                "name": tool.name,
+                "description": tool.description,
+                "input_schema": tool.inputSchema,
+            }
             for tool in response.tools
         ]
 
-        for t in available_tools:
-            print(f"Available tool: {t['name']}")
-            print(
-                f"Available tool description: {t.get('description', 'No description')}"
-            )
-            print(f"Available input_schema: {t['input_schema']}")
+        print(f"Available tools: {[t['name'] for t in available_tools]}")
 
         # Initial Claude API call
         print("Sending query to Claude...")
         response = self.anthropic.messages.create(
-            model=CLAUDE_MODEL,
+            model="claude-3-5-sonnet-20241022",
             max_tokens=1000,
             messages=messages,
             tools=available_tools,
         )
 
-        # Process response and handle tool calls
-        tool_results = []
+        # Track complete conversation
         final_text = []
-
-        assistant_message_content = []
-        for content in response.content:
-            if content.type == "text":
-                print("Received text response from Claude")
-                final_text.append(content.text)
-                assistant_message_content.append(content)
-            elif content.type == "tool_use":
-                tool_name = content.name
-                tool_args = content.input
-
-                print(f"Claude is calling tool: {tool_name} with args: {tool_args}")
-
-                # Execute tool call
-                result = await self.session.call_tool(tool_name, tool_args)
-                tool_results.append({"call": tool_name, "result": result})
-                final_text.append(f"[Calling tool {tool_name} with args {tool_args}]")
-
-                # Continue conversation with tool results
-                assistant_message_content.append(content)
-                messages.append(
-                    {"role": "assistant", "content": assistant_message_content}
+        
+        # Continue conversation until no more tool calls
+        while True:
+            # Process the most recent response
+            contains_tool_calls = False
+            assistant_message_content = []
+            
+            # First, collect all tool calls without executing them
+            pending_tool_calls = []
+            
+            # Process all content blocks from this response
+            for content in response.content:
+                if content.type == "text":
+                    print("Received text response from Claude")
+                    final_text.append(content.text)
+                    assistant_message_content.append(content)
+                elif content.type == "tool_use":
+                    contains_tool_calls = True
+                    # Store the tool call info for parallel execution
+                    pending_tool_calls.append({
+                        "tool_name": content.name,
+                        "tool_args": content.input,
+                        "tool_id": content.id
+                    })
+                    
+                    final_text.append(f"[Queueing tool call: {content.name} with args {content.input}]")
+                    assistant_message_content.append(content)
+            
+            # If no tool calls, we're done
+            if not contains_tool_calls:
+                break
+                
+            # Execute all tool calls in parallel
+            print(f"Executing {len(pending_tool_calls)} tool calls in parallel...")
+            tool_tasks = [
+                self.session.call_tool(call["tool_name"], call["tool_args"]) 
+                for call in pending_tool_calls
+            ]
+            
+            # Wait for all tool calls to complete
+            tool_results = await asyncio.gather(*tool_tasks)
+            
+            # Process results and build the response message
+            tool_result_content = []
+            for i, result in enumerate(tool_results):
+                tool_call = pending_tool_calls[i]
+                tool_result_content.append({
+                    "type": "tool_result",
+                    "tool_use_id": tool_call["tool_id"],
+                    "content": result.content
+                })
+                
+                # Add to final text for display
+                final_text.append(
+                    f"[Tool result for {tool_call['tool_name']}: {result.content}]"
                 )
-                messages.append(
-                    MessageParam(
-                        role="user",
-                        content=json.dumps(
-                            [
-                                {
-                                    "type": "tool_result",
-                                    "tool_use_id": content.id,
-                                    "content": result.content,
-                                }
-                            ]
-                        ),
-                    )
-                )
-
-                # Get next response from Claude
-                print("Sending tool results to Claude for follow-up...")
-                response = self.anthropic.messages.create(
-                    model=CLAUDE_MODEL,
-                    max_tokens=1000,
-                    messages=messages,
-                    tools=available_tools,
-                )
-
-                final_text.append(response.content[0].text)
-
+            
+            # Append assistant message with all tool calls
+            messages.append({
+                "role": "assistant",
+                "content": assistant_message_content
+            })
+            
+            # Add a single user message with all tool results
+            messages.append({
+                "role": "user",
+                "content": tool_result_content
+            })
+            
+            # Get next response from Claude with all tool results
+            print(f"Sending {len(tool_results)} tool results to Claude for follow-up...")
+            response = self.anthropic.messages.create(
+                model="claude-3-5-sonnet-20241022",
+                max_tokens=1000,
+                messages=messages,
+                tools=available_tools,
+            )
+        
         return "\n".join(final_text)
 
     async def chat_loop(self):
@@ -177,9 +196,9 @@ class MCPClient:
 
 async def main():
     if len(sys.argv) < 2:
-        print("Usage: python client.py <URL of SSE MCP server>")
+        print("Usage: python clientsse.py <URL of SSE MCP server>")
         print(
-            "Example: python client.py https://dev.udf.ai/chat/4a693c58-dbd3-4f08-a07e-2ec305a8bf29/sse"
+            "Example: python clientsse.py https://dev.udf.ai/chat/4a693c58-dbd3-4f08-a07e-2ec305a8bf29/sse"
         )
         sys.exit(1)
 
