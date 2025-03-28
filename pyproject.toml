@@ -11,3 +11,6 @@ dependencies = [
     "mcp[cli]>=1.4.1",
     "python-dotenv>=1.0.1",
 ]
+
+[tool.setuptools]
+packages = ['udfs']
