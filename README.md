@@ -8,7 +8,7 @@ This repo offers a simple step-by-step notebook workflow to setup [MCP Servers](
 
 ## Requirements
 - Python 3.11
-- Latest [Claude Desktop app](https://claude.ai/download) installed (MacOS & Windows)
+- Latest [Claude Desktop app](https://claude.ai/download) installed (macOS & Windows)
 
 If you're on Linux, the desktop app isn't available so [we've made a simple client](#using-a-local-claude-client-without-claude-desktop-app) you can use to have it running locally too!
 
@@ -26,7 +26,7 @@ You do _not_ need a Fused account to do any of this! All of this will be running
 - Install [`uv`](https://docs.astral.sh/uv/getting-started/installation/)
   if you don't have it:
 
-  Macos / Linux:
+  macOS / Linux:
   ```bash
   curl -LsSf https://astral.sh/uv/install.sh | sh
   ```
