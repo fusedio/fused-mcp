@@ -47,7 +47,7 @@ def udf(
     from datetime import datetime, timedelta
 
     # You would replace this with an actual Finnhub API key
-    API_KEY = "cvij5p1r01qks9qar9ngcvij5p1r01qks9qar9o0"  # Note: In real implementation, use secure key management
+    API_KEY = "FINNHUB_API_KEY_HERE"  # Note: In real implementation, use secure key management
 
     # Validate inputs with more lenient parsing
     valid_data_types = ["quote", "profile", "news", "financials"]
