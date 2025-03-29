@@ -31,7 +31,7 @@
                 "loader": "@@#CesiumIonLoader",
                 "loadOptions": {
                   "cesium-ion": {
-                    "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI3NjEwMjA4Ni00YmVkLTQyMjgtYjRmZS1lY2M3ZWFiMmFmNTYiLCJpZCI6MjYxMzMsImlhdCI6MTY3NTM2ODY4NX0.chGkGL6DkDNv5wYJQDMzWIvi9iDoVa27dgng_5ARDmo"
+                    "accessToken": ""
                   }
                 }
               }
