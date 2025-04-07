@@ -1,4 +1,3 @@
-# Code duplicated from fused-mcp repo
 import argparse
 import json
 import os
