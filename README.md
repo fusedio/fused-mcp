@@ -1,25 +1,9 @@
-
 <h1 align="center">
-  <a
-    target="_blank"
-    href="https://fused.io"
-  >
-    <img
-      align="center"
-      alt="UDF AI"
-src="https://raw.githubusercontent.com/fusedio/fused-docs/refs/heads/main/blog/2025-04-01-announcing-ai-builder/Fused_AI_Builder_graph.png"
-      style="width:100%;"
-    />
-    
-  </a>
+   The AI Agent Builder for Data Scientists
 </h1>
-
 
 <p align="center">
 <a href="/LICENSE" target="_blank"><img src='https://img.shields.io/badge/license-MIT-green?style=for-the-badge' /></a>&nbsp;<img src='https://img.shields.io/badge/Agents-3-green?style=for-the-badge' />&nbsp;<a href='https://discord.com/invite/Eryz9P2DeY'><img src='https://img.shields.io/badge/Fused-udf-d1e550?style=for-the-badge' /></a>
-</p>
-<p align="center">
-   The AI Agent Builder for Data Scientists
 </p>
 
 <p align="center">
@@ -43,6 +27,24 @@ src="https://raw.githubusercontent.com/fusedio/fused-docs/refs/heads/main/blog/2
 # Fused MCP Agents: Setting up MCP Servers for Data
 
 [MCP servers](https://modelcontextprotocol.io/introduction) allow LLMs like Claude to make HTTP requests, connecting them to APIs & executable code. We built this repo for ourselves & anyone working with data to easily pass _any_ Python code directly to your own desktop Claude app. 
+
+
+<h1 align="center">
+  <a
+    target="_blank"
+    href="https://fused.io"
+  >
+    <img
+      align="center"
+      alt="UDF AI"
+src="https://raw.githubusercontent.com/fusedio/fused-docs/refs/heads/main/blog/2025-04-01-announcing-ai-builder/Fused_AI_Builder_graph.png"
+      style="width:100%;"
+    />
+    
+  </a>
+</h1>
+
+
 
 This repo offers a simple step-by-step notebook workflow to setup [MCP Servers](https://modelcontextprotocol.io/introduction) with Claude's Desktop App, all in Python built on top of Fused [User Defined Functions](https://docs.fused.io/core-concepts/write/) (UDFs).
 
