@@ -24,7 +24,6 @@
   </a>
 </p>
 
-# Fused MCP Agents: Setting up MCP Servers for Data
 
 [MCP servers](https://modelcontextprotocol.io/introduction) allow LLMs like Claude to make HTTP requests, connecting them to APIs & executable code. We built this repo for ourselves & anyone working with data to easily pass _any_ Python code directly to your own desktop Claude app. 
 
