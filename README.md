@@ -1,5 +1,5 @@
 <h1 align="center">
-   The AI Agent Builder for Data Scientists
+   Fused MCP Agents: Setting up MCP Servers for Data
 </h1>
 
 <p align="center">
@@ -14,7 +14,7 @@
    <a
     href="https://docs.fused.io/blog/announcing-fused-ai-builder/"
     target="_blank"
-  ><b>Create an Agent</b>
+  ><b>Read the announcement</b>
  </a>&nbsp;&nbsp;&nbsp;🔥&nbsp;&nbsp;&nbsp;
   <a
     href="https://discord.com/invite/Eryz9P2DeY"
