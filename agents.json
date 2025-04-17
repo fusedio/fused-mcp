@@ -53,6 +53,14 @@
             "udfs": [
                 "single_routing_agent"
             ]
+        },
+        {
+            "name": "tourism_info",
+            "udfs": [
+                "visitors_arrival",
+                "visitors_purpose"
+            ]
         }
+
     ]
 }
