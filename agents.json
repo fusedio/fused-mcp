@@ -43,12 +43,6 @@
             ]
         },
         {
-            "name": "world_countries_info",
-            "udfs": [
-                "get_country_data"
-            ]
-        },
-        {
             "name": "routing_agent",
             "udfs": [
                 "single_routing_agent"
