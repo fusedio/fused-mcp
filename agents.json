@@ -55,10 +55,19 @@
             ]
         },
         {
+            "name": "tourism_info",
+            "udfs": [
+                "visitors_arrival",
+                "visitors_purpose"
+            ]
+        },
+        {
             "name": "stock_information",
             "udfs": [
                 "get_stock_details"
+
             ]
         }
+
     ]
 }
