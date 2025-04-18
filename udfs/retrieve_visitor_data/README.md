@@ -4,13 +4,13 @@
 ## Get started
 ```python
 # Import UDFs
-from udf_visitors_arrival import visitors_arrival
+from udf_retrieve_visitor_data import retrieve_visitor_data
 
 # Instantiate individual jobs
-job_visitors_arrival = visitors_arrival(year=2024, country=None)
+job_retrieve_visitor_data = retrieve_visitor_data(year=None, country=None)
 
 # Instantiate multi-step job
-job = fused.experimental.job([job_visitors_arrival])
+job = fused.experimental.job([job_retrieve_visitor_data])
 
 # Run locally
 job.run_local(file_id=0, chunk_id=0)

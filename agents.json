@@ -57,17 +57,14 @@
         {
             "name": "tourism_info",
             "udfs": [
-                "visitors_arrival",
-                "visitors_purpose"
+                "retrieve_visitor_data"
             ]
         },
         {
             "name": "stock_information",
             "udfs": [
                 "get_stock_details"
-
             ]
         }
-
     ]
 }
