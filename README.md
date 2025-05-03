@@ -1,3 +1,5 @@
+[![MseeP.ai Security Assessment Badge](https://mseep.net/pr/fusedio-fused-mcp-badge.png)](https://mseep.ai/app/fusedio-fused-mcp)
+
 <h1 align="center">
    Fused MCP Agents: Setting up MCP Servers for Data
 </h1>
